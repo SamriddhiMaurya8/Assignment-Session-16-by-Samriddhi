@@ -1,0 +1,30 @@
+body{
+    place-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    display:grid ;
+}
+
+
+#dropdown {
+    border: 1px solid #ccc;
+    display: none;
+    position: absolute;
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+.dropdown-item {
+    padding: 8px;
+    cursor: pointer;
+}
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+#country-input {
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    border-radius: 20px;
+}
