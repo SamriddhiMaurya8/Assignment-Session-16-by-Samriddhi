@@ -53,11 +53,13 @@ input.addEventListener('input', () => {
 
     
     
-    const data = input.value.toLowerCase();
-    if (data.trim()=== '') {
+    const data = input.value.trim().toLowerCase();
+    if (data === '') {
         dropdown.style.display = 'none';
+        // alert('Aree..input field me kuch to daalo...')
         return;
     }
+
     const CorrectVal = [];
     for (let i = 0; i < countries.length; i++) {
         if (countries[i].toLowerCase().includes(data)) {

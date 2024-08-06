@@ -97,58 +97,88 @@ const formInput = [
 ];
 
 
-function generateForm(formData){
-    const form = document.getElementById('form') ; 
-    form.innerHTML = '' ;
-    
-    for(let i = 0 ; i < formData.length ; i++){
-        const field = formData[i] ;
-        const wrapper = document.createElement('div') ;
+
+
+function CreateForm(config){
+    const form = document.getElementById("form");
+    form.innerHTML =''; 
+
+
+    for(let i =0  ; i <config.length ; i++){
+        const field = config[i] ; 
+        const div = document.createElement('div') ; 
         const label = document.createElement('label') ; 
         label.htmlFor = field.id ; 
-        label.textContent =field.label ; 
-        wrapper.appendChild(label) ; 
-        
-        let input ; 
-        if(field.type === 'select'){
-            input = document.createElement('select') ; 
-            input.id = field.id ; 
-            input.name=field.name ; 
-            if(field.required){
-                input.required = true ;
-            }
+        label.textContent = field.label ; 
+        div.appendChild(label) ; 
 
-            for(let j  = 0 ; j < field.options.length ; j++){
-                const option = field.options[j] ;
-                const opt = document.createElement('option') ; 
-                opt.value = option.value ; 
-                opt.textContent = option.label ; 
-                input.appendChild(opt) ; 
+        let input ; 
+        if (field.type === 'select') {
+            input = document.createElement('select');
+            input.id = field.id;
+            input.name = field.name;
+            if (field.required) 
+                input.required = true;
+
+            for (let j = 0; j < field.options.length; j++) {
+                const option = field.options[j];
+                const opt = document.createElement('option');
+                opt.value = option.value;
+                opt.textContent = option.label;
+                input.appendChild(opt);
             }
         }
-        else if(field.type === 'text'){
+        else if(field.type === 'textarea'){
             input = document.createElement('textarea') ; 
             input.id = field.id ; 
             input.name = field.name ; 
-            if(field.required)
-                input.required = true ; 
-            if(field.minLength){
-                input.minLength = field.minLength ;
+            if(field.required){
+                input.required=true ; 
+
             }
-            if(field.placeholder){
-                input.placeholder = field.placeholder  ; 
-            }
-            if(field.maxLength){
-                input.maxLength = field.maxLength ;
-            }
-        }
-        else{
+            if (field.placeholder) 
+                input.placeholder = field.placeholder;
+            if (field.maxLength) 
+                input.maxLength = field.maxLength;
+            if (field.minLength) 
+                input.minLength = field.minLength;
+             
             
         }
-            
-
-
+        else {
+            input = document.createElement('input');
+            input.type = field.type;
+            input.id = field.id;
+            input.name = field.name;
+            if (field.placeholder) 
+                input.placeholder = field.placeholder;
+            if (field.checked) 
+                input.checked = field.checked;
+            if (field.required) 
+                input.required = true;
+            if (field.value) 
+                input.value = field.value;
+            if(field.label){
+                input.value = field.value;
+            }
+            if (field.pattern) 
+                input.pattern = field.pattern;
+            if (field.maxLength) 
+                input.maxLength = field.maxLength;
+            if (field.minLength)
+                 input.minLength = field.minLength;
+            if (field.min) 
+                input.min = field.min;
+            if (field.max)
+                 input.max = field.max;
         }
+        div.appendChild(input);
+        form.appendChild(div);
 
     }
+    const submit = document.createElement('button');
+    submit.type = 'submit';
+    submit.textContent = 'Submit';
+    form.appendChild(submit);
 }
+document.getElementById("btn").addEventListener("click", () => CreateForm(formInput));

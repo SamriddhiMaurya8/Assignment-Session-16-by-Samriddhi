@@ -105,11 +105,11 @@ function generateForm(config) {
 
     for (let i = 0; i < config.length; i++) {
         const field = config[i];
-        const wrapper = document.createElement('div');
+        const div = document.createElement('div');
         const label = document.createElement('label');
         label.htmlFor = field.id;
         label.textContent = field.label;
-        wrapper.appendChild(label);
+        div.appendChild(label);
 
         let input;
         if (field.type === 'select') {
@@ -164,8 +164,8 @@ function generateForm(config) {
                 input.checked = field.checked;
         }
 
-        wrapper.appendChild(input);
-        form.appendChild(wrapper);
+        div.appendChild(input);
+        form.appendChild(div);
     }
 
     const submit = document.createElement('button');
