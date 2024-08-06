@@ -1,4 +1,3 @@
-// Array of countries
 const countries = [
     "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
     "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
@@ -31,37 +30,41 @@ const countries = [
     "Yemen", "Zambia", "Zimbabwe"
 ];
 
-
-
-
-
-
-
-
 const input = document.getElementById("country-input");
 const dropdown = document.getElementById("dropdown");
-const selectedCountry = document.getElementById("selected-country");
 
-
-function updateDropdown(CorrectVal) {
+function updateDropdown(countries) {
     dropdown.innerHTML = '';
-    CorrectVal.forEach(country => {
+    for (let i = 0; i < countries.length; i++) {
         const div = document.createElement("div");
-        div.textContent = country;
+        div.textContent = countries[i];
         div.className = 'dropdown-item';
         div.onclick = () => {
-            input.value = country;
-            dropdown.style.display = 'none'; 
+          
+            input.value = countries[i];
+            dropdown.style.display = 'none';
         };
         dropdown.appendChild(div);
-    });
-    dropdown.style.display = CorrectVal.length ? 'block' : 'none';
+    }
+    dropdown.style.display = countries.length ? 'block' : 'none';
 }
 
-
 input.addEventListener('input', () => {
+
+    
+    
     const data = input.value.toLowerCase();
-    const CorrectVal = countries.filter(country => country.toLowerCase().includes(data));
+    if (data.trim()=== '') {
+        dropdown.style.display = 'none';
+        return;
+    }
+    const CorrectVal = [];
+    for (let i = 0; i < countries.length; i++) {
+        if (countries[i].toLowerCase().includes(data)) {
+            console.log( CorrectVal);
+            CorrectVal.push(countries[i]);
+        }
+    }
     updateDropdown(CorrectVal);
 });
 
@@ -70,3 +73,15 @@ document.addEventListener('click', (event) => {
         dropdown.style.display = 'none';
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
