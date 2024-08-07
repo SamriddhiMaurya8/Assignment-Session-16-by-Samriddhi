@@ -148,6 +148,7 @@ function CreateForm(config){
             input = document.createElement('input');
             input.type = field.type;
             input.id = field.id;
+            // input.style.width='100%';
             input.name = field.name;
             if (field.placeholder) 
                 input.placeholder = field.placeholder;
@@ -159,6 +160,10 @@ function CreateForm(config){
                 input.value = field.value;
             if(field.label){
                 input.value = field.value;
+                // if(input.label === 'email')
+                // {
+                //     input.style.width='100%';
+                // }
             }
             if (field.pattern) 
                 input.pattern = field.pattern;
@@ -171,6 +176,13 @@ function CreateForm(config){
             if (field.max)
                  input.max = field.max;
         }
+
+        if ( field.id === 'fullName' || field.id === 'password') {
+            input.style.width = '80%';
+        }
+        if(field.id === 'email' )
+            input.style.width='86%' ;
+
         div.appendChild(input);
         form.appendChild(div);
 
