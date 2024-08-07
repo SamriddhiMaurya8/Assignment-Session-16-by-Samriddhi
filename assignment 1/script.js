@@ -3,11 +3,29 @@ function addTag() {
     const container = document.getElementById("input-container");
     const value = input.value.trim();
 
+
+    
+
+    // if (value === "") {
+    //   const validation = createElement('div')     ;
+    //   validation.textContent = "Write something here" ; 
+    //   validation.className = 'error';
+    //   container.appendChild(validation);
+    //   return;
+
+    // }
+
+
     if (value === "") {
-        alert("Input tag is empty!");
-        return;
+        input.placeholder = "Input can't be empty";
+        input.classList.add("inputError");
+        return; 
     }
     
+
+    input.placeholder = "Add a tag";
+    input.classList.remove("inputError");
+
     const item = document.createElement("div");
     item.className = "tag-item";
     item.innerHTML = `${value} <span class="tag-remove">×</span>`;
