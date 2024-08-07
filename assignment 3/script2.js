@@ -134,7 +134,6 @@ function CreateForm(config){
             input.name = field.name ; 
             if(field.required){
                 input.required=true ; 
-
             }
             if (field.placeholder) 
                 input.placeholder = field.placeholder;
@@ -181,4 +180,10 @@ function CreateForm(config){
     submit.textContent = 'Submit';
     form.appendChild(submit);
 }
-document.getElementById("btn").addEventListener("click", () => CreateForm(formInput));
+
+document.getElementById("btn").addEventListener("click", () => {
+
+    CreateForm(formInput);
+    document.getElementById("btn").remove();  //generate button disable krne k liye hai
+ 
+});
