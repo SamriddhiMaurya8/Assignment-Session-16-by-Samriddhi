@@ -21,10 +21,12 @@ function addTag() {
         input.classList.add("inputError");
         return; 
     }
-    
+    else{
 
-    input.placeholder = "Add a tag";
-    input.classList.remove("inputError");
+        input.placeholder = "Add a tag";
+        input.classList.remove("inputError");
+    }
+
 
     const item = document.createElement("div");
     item.className = "tag-item";
